@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Documentos Adoración Nocturna - Sección San Charbel</title>
+  <title>Documentos Adoración Nocturna - Sección San Chárbel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -12,10 +12,18 @@
       margin: auto;
       padding: 20px;
       background: #f7f7f7;
+      text-align: center;
+      color: #333;
     }
 
     h1 {
       color: #2e7d32;
+      margin-bottom: 8px;
+    }
+
+    .subtitulo {
+      margin-top: 0;
+      color: #555;
     }
 
     .archivo {
@@ -24,57 +32,145 @@
       padding: 14px;
       border-radius: 10px;
       box-shadow: 0 2px 5px #ddd;
+      text-align: center;
     }
 
     a {
       text-decoration: none;
       color: #1565c0;
       font-size: 18px;
+      font-weight: bold;
     }
 
     a:hover {
       text-decoration: underline;
     }
+
+    .volver {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 10px 16px;
+      background: #2e7d32;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .volver:hover {
+      background: #256428;
+      text-decoration: none;
+    }
+
+    .ruta-actual {
+      margin: 15px 0;
+      font-size: 15px;
+      color: #666;
+    }
+
+    .mensaje {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px #ddd;
+      color: #555;
+    }
   </style>
 </head>
 
 <body>
-  <h1>📚 Documentos Adoración Nocturna - Sección San Charbel </h1>
+  <h1>📚 Documentos Adoración Nocturna</h1>
+  <p class="subtitulo">Sección San Chárbel Makhlouf</p>
+
   <p>Documentos disponibles:</p>
 
-  <div id="lista">Cargando documentos...</div>
+  <div id="rutaActual" class="ruta-actual"></div>
+  <div id="volver"></div>
+  <div id="lista" class="mensaje">Cargando documentos...</div>
 
   <script>
     const usuario = "hekgarcia";
     const repositorio = "Test";
-    const carpeta = "documentos";
+    const carpetaBase = "documentos";
+
+    const params = new URLSearchParams(window.location.search);
+    const ruta = params.get("ruta");
+
+    const carpeta = ruta
+      ? carpetaBase + "/" + ruta
+      : carpetaBase;
 
     const url = `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`;
 
+    const lista = document.getElementById("lista");
+    const volver = document.getElementById("volver");
+    const rutaActual = document.getElementById("rutaActual");
+
+    if (ruta) {
+      rutaActual.innerHTML = `📁 Carpeta actual: <strong>${ruta}</strong>`;
+
+      const partes = ruta.split("/");
+      partes.pop();
+      const padre = partes.join("/");
+
+      volver.innerHTML = `
+        <a class="volver" href="${padre ? '?ruta=' + encodeURIComponent(padre) : './'}">
+          ⬅ Volver
+        </a>
+      `;
+    }
+
     fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("No se pudo acceder a la carpeta");
+        }
+        return response.json();
+      })
       .then(archivos => {
-        const lista = document.getElementById("lista");
+        lista.className = "";
         lista.innerHTML = "";
 
-        archivos.forEach(archivo => {
-          if (archivo.type === "file") {
-            const div = document.createElement("div");
-            div.className = "archivo";
+        if (!Array.isArray(archivos) || archivos.length === 0) {
+          lista.innerHTML = `<div class="mensaje">Esta carpeta no contiene documentos.</div>`;
+          return;
+        }
+
+        archivos.sort((a, b) => {
+          if (a.type === b.type) {
+            return a.name.localeCompare(b.name, "es");
+          }
+          return a.type === "dir" ? -1 : 1;
+        });
+
+        archivos.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "archivo";
+
+          if (item.type === "dir") {
+            const rutaCarpeta = item.path.replace(carpetaBase + "/", "");
 
             div.innerHTML = `
-              📄 <a href="${archivo.download_url}" target="_blank">
-                ${archivo.name}
+              📁 <a href="?ruta=${encodeURIComponent(rutaCarpeta)}">
+                ${item.name}
               </a>
             `;
+          } else if (item.type === "file") {
+            const nombreSinExtension = item.name.replace(/\.[^/.]+$/, "");
 
-            lista.appendChild(div);
+            div.innerHTML = `
+              📄 <a href="${item.download_url}" target="_blank">
+                ${nombreSinExtension}
+              </a>
+            `;
           }
+
+          lista.appendChild(div);
         });
       })
       .catch(error => {
-        document.getElementById("lista").innerHTML =
-          "No se pudieron cargar los documentos.";
+        lista.className = "mensaje";
+        lista.innerHTML = "No se pudieron cargar los documentos.";
+        console.error(error);
       });
   </script>
 </body>
