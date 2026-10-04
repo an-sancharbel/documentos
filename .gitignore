@@ -1,0 +1,8 @@
+# Nunca subir claves privadas
+*.key
+*private-key*.pem
+signing-private-key.pem
+
+__pycache__/
+*.pyc
+estructura.txt

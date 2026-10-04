@@ -78,6 +78,40 @@
       box-shadow: 0 2px 5px #ddd;
       color: #555;
     }
+
+    .aviso-documentos {
+        max-width: 900px;
+        margin: 40px auto 25px;
+        padding: 20px 24px;
+        background-color: #f5f7f5;
+        border-left: 4px solid #397a46;
+        border-radius: 6px;
+        color: #555;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .aviso-documentos h2 {
+        margin: 0 0 12px;
+        color: #397a46;
+        font-size: 1rem;
+    }
+
+    .aviso-documentos p {
+        margin: 0 0 12px;
+    }
+
+    .aviso-documentos p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+        .aviso-documentos {
+            margin: 30px 12px 20px;
+            padding: 16px;
+        }
+    }
   </style>
 </head>
 
@@ -93,7 +127,50 @@
   <div id="volver"></div>
   <div id="lista" class="mensaje">Cargando documentos...</div>
 
-<script src="documentos.min.js" defer></script>
+  <script src="documentos.min.js" defer></script>
+
+  <footer class="aviso-documentos" aria-labelledby="titulo-aviso">
+    <h2 id="titulo-aviso">Aviso sobre los documentos</h2>
+
+    <p>
+        Este sitio web facilita la consulta de documentos y materiales
+        relacionados con la Adoración Nocturna.
+    </p>
+
+    <p>
+        La administración de la página web, así como la publicación y
+        distribución de los documentos, están a cargo del
+        <strong>Consejo de la Sección San Chárbel Makhlouf,
+        representado por su presidente</strong>. Con permiso del 
+        consejo superior para distribuirlo a los hermanos adoradores.
+    </p>
+
+    <p>
+        La responsabilidad sobre el contenido, la procedencia y la seguridad
+        de los documentos corresponde a sus creadores originales.
+        Los administradores del sitio web no verifican la exactitud de la
+        información ni garantizan que los archivos estén libres de
+        contenido malicioso.
+    </p>
+
+    <p>
+        Se recomienda a los usuarios mantener actualizados su navegador,
+        sistema operativo y software de protección, así como adoptar las
+        precauciones necesarias al visualizar o descargar los archivos.
+    </p>
+
+    <p>
+        Para comunicar cualquier problema relacionado con un documento,
+        solicitar su corrección o pedir su retirada de la página web,
+        favor de contactar
+        <strong>al presidente o al Consejo de la Sección
+        San Chárbel Makhlouf</strong>.
+    </p>
+
+    <p>
+      <a href="aviso.html">Consultar el aviso completo sobre los documentos</a>
+    </p>
+  </footer>
 
 </body>
 </html>
