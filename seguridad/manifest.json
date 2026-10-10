@@ -96,6 +96,11 @@
       "size": 210045
     },
     {
+      "path": "2026/Avisos Consejo Superior/Avisos Octubre 2026.jpeg",
+      "sha256": "642e4f1daa307d8fe5bc45bc0a890abe1bc7ba08899a0b483cebb7b6fd6307d1",
+      "size": 238709
+    },
+    {
       "path": "2026/Avisos Consejo Superior/Circular 1.jpeg",
       "sha256": "49d9205ee33806f8dab8b467f1518b33d14fd2173fbbf3cb4a8451e0f348e70c",
       "size": 321952
@@ -121,6 +126,11 @@
       "size": 122044
     },
     {
+      "path": "2026/Avisos Consejo Superior/Circular 9.jpeg",
+      "sha256": "2b364b98a97ae77426be1fe09087ae33053d088ea7ecd9411705eca9f4efb94d",
+      "size": 268246
+    },
+    {
       "path": "2026/Avisos Consejo Superior/Desagravio carnaval Calendario por decanato.jpeg",
       "sha256": "24d3023d55167402baff16ce72b20242c9776e2b9d7576236a24af149c84d9aa",
       "size": 197553
@@ -134,6 +144,11 @@
       "path": "2026/Avisos San Charbel/1 Avisos Enero 2026.pdf",
       "sha256": "10f1ee7782b8b3211ad47ce7fb6bef356e5dfe0eb3a26fbca3b5324f90304b9e",
       "size": 262666
+    },
+    {
+      "path": "2026/Avisos San Charbel/10 Avisos Octubre 2026.pdf",
+      "sha256": "df4e2cd8226869ac9f6e1f876048706896b91a22af6f98ed4da0c4cf706adfb3",
+      "size": 270440
     },
     {
       "path": "2026/Avisos San Charbel/2 Avisos Febrero 2026.pdf",
@@ -189,6 +204,11 @@
       "path": "2026/Formacion/05_TEMA_FORMACION_JEFE Y SECRETARIO DE TURNO.pdf",
       "sha256": "f427e74179369e8a2c71cbeee7036fdece5ad2b39d678ccdf13840f67f33333c",
       "size": 10124326
+    },
+    {
+      "path": "2026/Formacion/10_Vigilia_Difuntos.pdf",
+      "sha256": "3f03219ebe12298667f31c48083b35f46be60e474b155dcb8dfce16bed6aa274",
+      "size": 6618400
     },
     {
       "path": "2026/Formacion/Actualizacion Ritual/cuarta parte a.pdf",
@@ -454,9 +474,14 @@
       "path": "2026/Renacimiento Eucaristico/RENACIMIENTO_EUCARISTICO_MARZO_2026.pdf",
       "sha256": "2987a828f9b8ce320a7464b503dea41a6c1120c81852c12fcaaac1d79f17397d",
       "size": 12947026
+    },
+    {
+      "path": "2026/Renacimiento Eucaristico/Renacimiento_Eucaristico_Octubre_26.pdf",
+      "sha256": "4db55bbeb27e981bc831e573fc1dc5de328cc0de710ed49d436d75c09186d76a",
+      "size": 15029260
     }
   ],
-  "generated_utc": "2026-10-04T07:23:24.242922+00:00",
+  "generated_utc": "2026-10-10T21:31:28.567659+00:00",
   "hash_algorithm": "SHA-256",
   "schema": 1,
   "signature_algorithm": "Ed25519"
